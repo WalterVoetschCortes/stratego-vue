@@ -64,3 +64,6 @@
 <style>
   @import './assets/styles/home.css';
 </style>
+<style>
+  @import './assets/styles/about.css';
+</style>

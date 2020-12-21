@@ -1,0 +1,28 @@
+.about__subtitle{
+    margin-bottom: var(--mb-2);
+    font-size: var(--h2-font-size);
+}
+
+.development__text{
+    margin-bottom: var(--mb-4);
+    color: var(--second-color);
+}
+.development__description{
+    font-size: var(--small-font-size);
+    margin-bottom: var(--mb-3);
+    color: var(--second-color);
+}
+
+.fa-code{
+    color: var(--blue-color);
+}
+.fa-bold{
+    color: var(--green-color);
+}
+.fa-css3{
+    color: var(--red-color)
+}
+.fa-code, .fa-bold, .fa-css3{
+    font-size: var(--extra-big-font-size);
+    margin-bottom: var(--mb-1);
+}

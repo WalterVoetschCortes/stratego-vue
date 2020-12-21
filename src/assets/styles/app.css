@@ -50,3 +50,11 @@ html{
 .v-tab{
     font-family: var(--body-font);
 }
+
+h1,h2,p{
+    margin: 0;
+    font-family: var(--body-font);
+}
+p{
+    font-family: 'Nova Oval', sans-serif;
+}
