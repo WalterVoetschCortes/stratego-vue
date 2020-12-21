@@ -58,3 +58,9 @@ h1,h2,p{
 p{
     font-family: 'Nova Oval', sans-serif;
 }
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: square;
+    font-family: 'Nova Oval', sans-serif;
+}

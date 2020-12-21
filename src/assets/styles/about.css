@@ -16,13 +16,13 @@
 .fa-code{
     color: var(--blue-color);
 }
-.fa-bold{
+.fa-vuejs{
     color: var(--green-color);
 }
 .fa-css3{
     color: var(--red-color)
 }
-.fa-code, .fa-bold, .fa-css3{
+.fa-code, .fa-vuejs, .fa-css3{
     font-size: var(--extra-big-font-size);
     margin-bottom: var(--mb-1);
 }

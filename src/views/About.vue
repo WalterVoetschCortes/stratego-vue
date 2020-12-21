@@ -19,7 +19,7 @@
                   </p>
 
                   <p class="development__text">
-                    Here are some tools and technologies we used for the development of this web game:
+                    Here are some tools and technologies we use for the development of this web game:
                   </p>
                   <div class="container-fluid padding">
                     <div class="row text-center padding">
@@ -29,9 +29,9 @@
                         <p class="development__description">Built with the latest version of HTML, HTML5.</p>
                       </div>
                       <div class="col-xs-12 col-sm-6 col-md-4">
-                        <i class="fas fa-bold"></i>
-                        <h3>BOOTSTRAP</h3>
-                        <p class="development__description">Built with the latest version of Bootstrap, Bootstrap 4.</p>
+                        <i class="fab fa-vuejs"></i>
+                        <h3>VUE.JS</h3>
+                        <p class="development__description">Built with the latest version of Vue.js, Vue 2.</p>
                       </div>
                       <div class="col-sm-12 col-md-4">
                         <i class="fab fa-css3"></i>
