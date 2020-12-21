@@ -67,3 +67,6 @@
 <style>
   @import './assets/styles/about.css';
 </style>
+<style>
+  @import './assets/styles/gameplay.css';
+</style>
