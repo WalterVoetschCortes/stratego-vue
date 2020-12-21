@@ -1,0 +1,52 @@
+/*===== GOOGLE FONTS =====*/
+@import url('https://fonts.googleapis.com/css2?family=Nova+Cut&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nova+Oval&display=swap');
+
+/*===== FONTS =====*/
+:root{
+    --body-font:'Nova Cut';
+    --extra-big-font-size: 2.5rem;
+    --big-font-size: 1.75rem;
+    --h2-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.9rem;
+    --extra-small-font-size: 0.8rem;
+    --font-semi: 600;
+}
+
+/*===== COLORS =====*/
+:root{
+    --first-color: #BF7E04;
+    --second-color: #2E1206;
+
+    --background-color: #fae9c5;
+
+    /* color palette */
+    --yellow-color: #F5BE4C;
+    --red-color: #D86A5A;
+    --green-color: #93B053;
+    --blue-color: #0086FD;
+}
+
+
+/*===== MARGINS =====*/
+:root{
+    --mb-1: 0.5rem;
+    --mb-2: 1rem;
+    --mb-3: 1.5rem;
+    --mb-4: 2rem;
+    --mb-5: 2.5rem;
+    --mb-6: 3rem;
+}
+
+body{
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+}
+html{
+    scroll-behavior: smooth;
+}
+
+.v-tab{
+    font-family: var(--body-font);
+}

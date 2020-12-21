@@ -6,28 +6,35 @@
       flat
     >
       <v-avatar
-        :color="$vuetify.breakpoint.smAndDown ? 'grey darken-1' : 'transparent'"
+        :color="$vuetify.breakpoint.smAndDown ? 'primary' : 'transparent'"
         size="32"
       ></v-avatar>
 
       <v-tabs
         centered
         class="ml-n9"
-        color="grey darken-1"
+        color="primary"
       >
         <v-tab
           v-for="link in links"
-          :key="link"
+          :key="link.title"
+          :to="link.to"
+          class="v-tab"
         >
-          {{ link }}
+          {{ link.title }}
         </v-tab>
       </v-tabs>
 
       <v-avatar
         class="hidden-sm-and-down"
-        color="grey darken-1 shrink"
+        color="secondary"
         size="32"
-      ></v-avatar>
+      >
+        <img
+                src="../src/assets/images/icon2.png"
+                alt="S"
+        >
+      </v-avatar>
     </v-app-bar>
 
     <v-main class="grey lighten-3">
@@ -41,12 +48,19 @@
   export default {
     data: () => ({
       links: [
-        'Home',
-        'About',
-        'Gameplay',
-        'Menu',
-        'Game',
+        {title:'Home', to:'/'},
+        {title:'About', to:'/about'},
+        {title:'Gameplay', to:'/gameplay'},
+        {title:'Menu', to:'/menu'},
+        {title:'Game', to:'/game'},
       ],
     }),
   }
 </script>
+
+<style>
+  @import './assets/styles/app.css';
+</style>
+<style>
+  @import './assets/styles/home.css';
+</style>

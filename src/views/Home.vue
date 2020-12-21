@@ -11,8 +11,16 @@
                   min-height="70vh"
                   rounded="lg"
                 >
-                                          <img alt="Vue logo" src="../assets/images/logo.png">
-                                          <HelloWorld msg="Welcome to Your Vue.js App"/>
+                    <v-img alt="Vue logo" src="../assets/images/stratego.jpg" width="100%"> </v-img>
+                    <v-card
+                            class="d-flex justify-center"
+                            flat
+                            tile
+                    >
+                        <v-btn class="button" to="/about">
+                            Play
+                        </v-btn>
+                    </v-card>
                   <!--  -->
                 </v-sheet>
               </v-col>
