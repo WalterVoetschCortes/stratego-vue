@@ -2,29 +2,10 @@
     <div class="gameplay">
         <v-container>
             <v-row>
-                <v-col
-                        cols="12"
-                        sm="2"
-                >
-                    <v-sheet
-                            rounded="lg"
-                            height="300"
-                            color="blue"
-                    >
-                        <div class="gameplay-parent-img">
-                            <img
-                                    src="../assets/images/team-blue.png"
-                                    class="gameplay-rb-img"
-                            >
-                        </div>
-                        <!--  -->
-
-                    </v-sheet>
-                </v-col>
 
                 <v-col
                         cols="12"
-                        sm="8"
+                        sm="12"
                 >
                     <v-sheet
                             min-height="70vh"
@@ -136,7 +117,7 @@
                                                     <img
                                                             :src="item.img"
                                                             height="300px"
-                                                            class="gameplay-figure-img"
+                                                            class="gameplay-figure-img figure-svg"
                                                     >
                                                 </v-col>
                                             </v-row>
@@ -149,25 +130,6 @@
                     </v-sheet>
                 </v-col>
 
-                <v-col
-                        cols="12"
-                        sm="2"
-                >
-                    <v-sheet
-                            rounded="lg"
-                            height="300"
-                            color="red"
-                    >
-                        <div class="gameplay-parent-img">
-                            <img
-                                    src="../assets/images/team-red.png"
-                                    class="gameplay-rb-img"
-                            >
-                        </div>
-
-                        <!--  -->
-                    </v-sheet>
-                </v-col>
             </v-row>
         </v-container>
     </div>

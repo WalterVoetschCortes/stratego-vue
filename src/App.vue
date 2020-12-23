@@ -41,6 +41,29 @@
       <router-view></router-view>
 
     </v-main>
+    <v-footer
+            color="secondary"
+            padless
+    >
+      <v-card
+              flat
+              tile
+              class="secondary white--text text-center"
+              width="100%"
+
+      >
+        <img src="../src/assets/images/logo-rev.png" alt="StrategoLogo">
+
+        <div class="footer__social">
+          <a href="https://github.com/BenjaminMannsdoerfer/Stratego" target="_blank" class="footer__icon"><i class="fab fa-github"></i>Desktop-App</a>
+          <a href="https://github.com/WalterVoetschCortes/de.htwg.wt.StrategoInScala" target="_blank" class="footer__icon"><i class="fab fa-github"></i>Web-App</a>
+        </div>
+
+        <v-card-text class="white--text">
+          <strong>&#169;</strong> {{ new Date().getFullYear() }} by<strong> Walter Voetsch Cortes </strong>and<strong> Axel Schwarz</strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
   </v-app>
 </template>
 
@@ -57,6 +80,7 @@
     }),
   }
 </script>
+
 
 <style>
   @import './assets/styles/app.css';

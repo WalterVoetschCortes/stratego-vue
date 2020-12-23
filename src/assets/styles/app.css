@@ -64,3 +64,31 @@ ul{
     list-style: square;
     font-family: 'Nova Oval', sans-serif;
 }
+
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+    color: var(--first-color);
+}
+
+/*==== COLOR SVG IMAGES ====*/
+.figure-svg{
+    filter: invert(10%) sepia(14%) saturate(2835%) hue-rotate(336deg) brightness(95%) contrast(101%);
+}
+
+/*===== FOOTER =====*/
+.footer__title{
+    width: 200px;
+}
+
+.footer__social{
+    margin-bottom: var(--mb-4);
+}
+
+.footer__icon{
+    font-size: var(--small-font-size);
+    color: #fff !important;
+    margin: 0 var(--mb-2);
+}

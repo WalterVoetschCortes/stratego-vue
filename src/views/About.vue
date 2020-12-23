@@ -8,7 +8,7 @@
                       sm="12"
               >
                 <v-sheet
-                        min-height="70vh"
+                        min-height="40vh"
                         rounded="lg"
                         class="pa-6"
                 >
@@ -45,6 +45,48 @@
               </v-col>
 
             </v-row>
+
+      <v-row>
+        <v-col
+                cols="12"
+                sm="6"
+        >
+          <v-sheet
+                  rounded="lg"
+                  height="300"
+                  color="blue"
+          >
+            <div class="gameplay-parent-img">
+              <img
+                      src="../assets/images/team-blue.png"
+                      class="gameplay-rb-img"
+              >
+            </div>
+            <!--  -->
+
+          </v-sheet>
+        </v-col>
+
+        <v-col
+                cols="12"
+                sm="6"
+        >
+          <v-sheet
+                  rounded="lg"
+                  height="300"
+                  color="red"
+          >
+            <div class="gameplay-parent-img">
+              <img
+                      src="../assets/images/team-red.png"
+                      class="gameplay-rb-img"
+              >
+            </div>
+
+            <!--  -->
+          </v-sheet>
+        </v-col>
+      </v-row>
           </v-container>
   </div>
 </template>
