@@ -3,3 +3,28 @@
     margin-top: var(--mb-3);
     font-size: var(--h2-font-size);
 }
+
+.gameplay-figure-name{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.gameplay-figure-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gameplay-parent-img{
+    position: relative;
+    height: 300px;
+    text-align: center;
+ }
+.gameplay-rb-img {
+    max-width: 100%;
+    height: auto;
+    margin:auto;
+    left:0;right:0; /* Aligns horizontal center */
+    position: absolute;
+    bottom: 0;
+}

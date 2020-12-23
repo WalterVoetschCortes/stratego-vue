@@ -8,8 +8,15 @@
                 >
                     <v-sheet
                             rounded="lg"
-                            min-height="268"
+                            height="300"
+                            color="blue"
                     >
+                        <div class="gameplay-parent-img">
+                            <img
+                                    src="../assets/images/team-blue.png"
+                                    class="gameplay-rb-img"
+                            >
+                        </div>
                         <!--  -->
 
                     </v-sheet>
@@ -24,12 +31,14 @@
                             rounded="lg"
                             class="pa-6"
                     >
+                        <h2 class="gameplay__subtitle">About the game</h2>
                         <p>
                             Stratego is a strategy board game for two players. Each player has 40 pieces representing different characters.
                         </p>
                         <p>
                             We modified the game a little bit so you can walk with all characters (except flag and bomb) just one field up, down, to the right or to the left. You also can attack the oppenents with your figures. To win the game you have to find and attack the flag of your enemy.
                         </p>
+                        <h2 class="gameplay__subtitle">Rules</h2>
                         <p>
                             Important rules:
                         </p>
@@ -62,7 +71,7 @@
                                             v-for="item in items"
                                             :key="item.tab"
                                     >
-                                        <v-card flat>
+                                        <v-card>
                                             <v-row no-gutters>
                                                 <v-col
                                                         cols="12"
@@ -71,19 +80,20 @@
                                                 >
 
                                                     <v-card-title>
-                                                        Top western road trips
+                                                        <h2 class="gameplay__subtitle gameplay-figure-name">{{item.tab}}</h2>
                                                     </v-card-title>
 
                                                     <v-card-subtitle>
-                                                        1,000 miles of wonder
+                                                        <p>Rank {{item.rank}}</p>
                                                     </v-card-subtitle>
+
 
                                                     <v-card-actions>
                                                         <v-btn
-                                                                color="orange lighten-2"
+                                                                color="primary"
                                                                 text
                                                         >
-                                                            Explore
+                                                            See more
                                                         </v-btn>
 
                                                         <v-spacer></v-spacer>
@@ -100,7 +110,22 @@
                                                         <div v-show="show">
                                                             <v-divider></v-divider>
 
-                                                            <v-card-text>{{ item.content }}</v-card-text>
+                                                            <v-card-text><p>{{ item.content }}</p></v-card-text>
+
+                                                            <v-card-actions>
+                                                                <v-tooltip right>
+                                                                    <template v-slot:activator="{ on, attrs}">
+                                                                        <v-btn
+                                                                                color="secondary"
+                                                                                v-bind="attrs"
+                                                                                v-on="on"
+                                                                        >
+                                                                            Moveable?
+                                                                        </v-btn>
+                                                                    </template>
+                                                                    <span><i :class="item.move"></i></span>
+                                                                </v-tooltip>
+                                                            </v-card-actions>
                                                         </div>
                                                     </v-expand-transition>
                                                 </v-col>
@@ -108,10 +133,11 @@
                                                         cols="6"
                                                         md="4"
                                                 >
-                                                    <v-img
-                                                            src="../assets/svg/character-bomb.svg"
-                                                            width="200px"
-                                                    ></v-img>
+                                                    <img
+                                                            :src="item.img"
+                                                            height="300px"
+                                                            class="gameplay-figure-img"
+                                                    >
                                                 </v-col>
                                             </v-row>
                                         </v-card>
@@ -129,8 +155,16 @@
                 >
                     <v-sheet
                             rounded="lg"
-                            min-height="268"
+                            height="300"
+                            color="red"
                     >
+                        <div class="gameplay-parent-img">
+                            <img
+                                    src="../assets/images/team-red.png"
+                                    class="gameplay-rb-img"
+                            >
+                        </div>
+
                         <!--  -->
                     </v-sheet>
                 </v-col>
@@ -145,18 +179,18 @@
                 show: false,
                 tab: null,
                 items: [
-                    { tab: 'Bomb', img: '../images/', content: 'Bomb bla bla bla bla bla bla bla bla bla bla bla.' },
-                    { tab: 'Marshal', content: 'Tab 2 Content' },
-                    { tab: 'General', content: 'Tab 3 Content' },
-                    { tab: 'Colonel', content: 'Tab 4 Content' },
-                    { tab: 'Major', content: 'Tab 5 Content' },
-                    { tab: 'Captain', content: 'Tab 6 Content' },
-                    { tab: 'Lieutenant', content: 'Tab 7 Content' },
-                    { tab: 'Sergeant', content: 'Tab 8 Content' },
-                    { tab: 'Miner', content: 'Tab 9 Content' },
-                    { tab: 'Scout', content: 'Tab 10 Content' },
-                    { tab: 'Spy', content: 'Tab 10 Content' },
-                    { tab: 'Flag', content: 'Tab 10 Content' },
+                    { tab: 'Bomb', rank: 'B', img: require('../assets/svg/character-bomb.svg'), content: 'Bomb bla bla bla bla bla bla bla bla bla bla bla.', move: 'fas fa-thumbs-down' },
+                    { tab: 'Marshal', rank: '10', img: require('../assets/svg/character-marshal.svg'), content: 'Marshal bla bla bla bla bla bla bla bla bla bla bla.', move: 'fas fa-thumbs-up' },
+                    { tab: 'General', rank: '9', img: require('../assets/svg/character-general.svg'), content: 'General bla bla bla bla bla bla bla bla bla bla bla.', move: 'fas fa-thumbs-up' },
+                    { tab: 'Colonel', rank: '8', img: require('../assets/svg/character-colonel.svg'), content: 'Colonel bla bla bla bla bla bla bla bla bla bla bla.', move: 'fas fa-thumbs-up' },
+                    { tab: 'Major', rank: '7', img: require('../assets/svg/character-major.svg'), content: 'Major bla bla bla bla bla bla bla bla bla bla bla.', move: 'fas fa-thumbs-up' },
+                    { tab: 'Captain', rank: '6', img: require('../assets/svg/character-captain.svg'), content: 'Captain bla bla bla bla bla bla bla bla bla bla bla.', move: 'fas fa-thumbs-up' },
+                    { tab: 'Lieutenant', rank: '5', img: require('../assets/svg/character-lieutenant.svg'), content: 'Lieutenant bla bla bla bla bla bla bla bla bla bla bla.', move: 'fas fa-thumbs-up' },
+                    { tab: 'Sergeant', rank: '4', img: require('../assets/svg/character-sergeant.svg'), content: 'Sergeant bla bla bla bla bla bla bla bla bla bla bla.', move: 'fas fa-thumbs-up' },
+                    { tab: 'Miner', rank: '3', img: require('../assets/svg/character-miner.svg'), content: 'Miner bla bla bla bla bla bla bla bla bla bla bla.', move: 'fas fa-thumbs-up' },
+                    { tab: 'Scout', rank: '2', img: require('../assets/svg/character-scout.svg'), content: 'Scout bla bla bla bla bla bla bla bla bla bla bla.', move: 'fas fa-thumbs-up' },
+                    { tab: 'Spy', rank: '1', img: require('../assets/svg/character-spy.svg'), content: 'Spy bla bla bla bla bla bla bla bla bla bla bla.', move: 'fas fa-thumbs-up' },
+                    { tab: 'Flag', rank: 'F', img: require('../assets/svg/character-flag.svg'), content: 'Flag bla bla bla bla bla bla bla bla bla bla bla.', move: 'fas fa-thumbs-down' },
                 ],
             }
         },

@@ -12,7 +12,7 @@
                         rounded="lg"
                         class="pa-6"
                 >
-                  <h2 class="about__subtitle">Welcome to Stratego</h2>
+                  <h2 class="about__subtitle">About the project</h2>
                   <p class="about__text">
                     A little info about the game STRATEGO. This game is part of our project for our class Web Technologies at the
                     University of Applied Science HTWG Konstanz and is a continuation of the project in software engineering.

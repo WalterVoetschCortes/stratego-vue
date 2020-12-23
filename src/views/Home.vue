@@ -11,7 +11,7 @@
                   min-height="70vh"
                   rounded="lg"
                 >
-                    <v-img alt="Vue logo" src="../assets/images/stratego.jpg" width="100%"> </v-img>
+                    <img alt="Vue logo" src="../assets/images/stratego.jpg" width="100%">
                     <v-card
                             class="d-flex justify-center"
                             flat
