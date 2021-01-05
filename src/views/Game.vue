@@ -225,11 +225,12 @@
 
         },
         created: function () {
+            var ref = this;
             console.log("Starting connection to Stratego WebSocket Server")
             this.connection = new WebSocket("ws://localhost:9000/websocket")
 
             this.connection.onopen = function (event) {
-                console.log(event)
+                //console.log(event)
                 console.log("Successfully connected to Stratego Websocket Server")
             }
             this.connection.onclose = function () {
@@ -242,16 +243,17 @@
                 console.log("message")
                 if (typeof e.data === "string") {
                     let json = JSON.parse(e.data);
-                    console.log(json)
-                    console.log("matchfield: " + json.matchField)
                     let fields = json.matchField;
                     let currentPlayerIndex = json.currentPlayerIndex;
                     let currentPlayer = json.currentPlayer;
-                    //console.log("fields: " + fields)
-                    //console.log("playerIndex: " + currentPlayerIndex)
-                    this.updateMatchField(fields);
-                    this.updateView();
-                    this.updateCurrentPlayer(currentPlayer, currentPlayerIndex)
+                    //console.log("all data: " + e.data)
+                    console.log("fields: " + fields)
+                    console.log("playerIndex: " + currentPlayerIndex)
+                    console.log("player: " + currentPlayer)
+
+                    ref.updateMatchField(fields);
+                    ref.updateView();
+                    ref.updateCurrentPlayer(currentPlayer, currentPlayerIndex)
 
 
                 }
@@ -299,27 +301,27 @@
                     var key = event.which;
                     switch(key) {
                         case 37:
-                            dir = "l"
+                            this.dir = "l"
                             console.log("left")
                             // Key left.
                             break;
                         case 38:
-                            dir = "u"
+                            this.dir = "u"
                             console.log("up")
                             // Key up.
                             break;
                         case 39:
-                            dir = "r"
+                            this.dir = "r"
                             console.log("right")
                             // Key right.
                             break;
                         case 40:
-                            dir = "d"
+                            this.dir = "d"
                             console.log("down")
                             // Key down.
                             break;
                     }
-                    this.move(dir, rowA, colA)
+                    this.move(this.dir, rowA, colA)
                 });
 
             })
