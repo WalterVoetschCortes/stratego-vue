@@ -45,6 +45,7 @@
                 connection: null,
                 fields: [],
                 currentPlayerIndex: 0,
+                cpi: 30,
                 size: 10,
                 colA: 0,
                 rowA: 0,
@@ -209,7 +210,14 @@
                     "col": col,
                     "dir": dir
                 })
-                let result = await axios.post('http://localhost:9000/move', json);
+                let options = {
+                    headers: { 'Content-Type': 'application/json' }
+                    , url: 'http://localhost:9000/move'
+                    , method: 'post'
+                    , data: json
+                }
+                console.log(json)
+                let result = await axios(options);
                 const {matchField, currentPlayer, currentPlayerIndex} = result
                 this.updateMatchField(matchField)
                 this.updateView()
@@ -219,6 +227,7 @@
                 this.fields = newFields
             },
             updateCurrentPlayer(currentPlayer, currentPlayerIndex){
+                console.log("updateCurrentPlayer: " + currentPlayer)
                 this.currentPlayerIndex = currentPlayerIndex
                 document.getElementById("infoPlayer").innerHTML = currentPlayer + ", it's your turn!"
             }
@@ -264,34 +273,36 @@
                 // Code that will run only after the
                 // entire view has been rendered
 
+                var ref = this;
 
                 axios.get("http://localhost:9000/json")
                 .then(response => {
                     //console.log(JSON.stringify(response.data));
                     this.updateMatchField(response.data.matchField);
                     this.updateView()
-                    this.updateCurrentPlayer(JSON.stringify(response.data.currentPlayer), JSON.stringify(response.data.currenPlayerIndex))
+                    this.updateCurrentPlayer(JSON.stringify(response.data.currentPlayer),response.data.currentPlayerIndex)
                 })
 
 
 
                 $(document).on('click', '.cells_blue',(function () {
-                    this.colA = this.parentElement.rowIndex
-                    this.rowA = this.cellIndex
+                    ref.colA = this.parentElement.rowIndex
+                    ref.rowA = this.cellIndex
 
+                    console.log(ref.colA + " " + ref.rowA)
                     // changes background color of selected cell:
-                    if(this.currentPlayerIndex === 0){
+                    if(ref.currentPlayerIndex === 0){
                         $(".cell").removeClass('selectedCell');
                         $(this).addClass('selectedCell');
                     }
                 }))
 
                 $(document).on('click', '.cells_red',(function () {
-                    this.colA = this.parentElement.rowIndex
-                    this.rowA = this.cellIndex
+                    ref.colA = this.parentElement.rowIndex
+                    ref.rowA = this.cellIndex
 
                     // changes background color of selected cell:
-                    if(this.currentPlayerIndex === 1){
+                    if(ref.currentPlayerIndex === 1){
                         $(".cell").removeClass('selectedCell');
                         $(this).addClass('selectedCell');
                     }
@@ -301,27 +312,27 @@
                     var key = event.which;
                     switch(key) {
                         case 37:
-                            this.dir = "l"
+                            ref.dir = "l"
                             console.log("left")
                             // Key left.
                             break;
                         case 38:
-                            this.dir = "u"
+                            ref.dir = "u"
                             console.log("up")
                             // Key up.
                             break;
                         case 39:
-                            this.dir = "r"
+                            ref.dir = "r"
                             console.log("right")
                             // Key right.
                             break;
                         case 40:
-                            this.dir = "d"
+                            ref.dir = "d"
                             console.log("down")
                             // Key down.
                             break;
                     }
-                    this.move(this.dir, rowA, colA)
+                    ref.move(ref.dir, ref.rowA, ref.colA)
                 });
 
             })
