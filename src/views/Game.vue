@@ -33,7 +33,6 @@
     import StrategoField from '@/components/StrategoField.vue'
     import StrategoInfo from '@/components/StrategoInfo.vue'
     import axios from "axios";
-    import Matchfield from '@/assets/javascripts/matchfield.js'
 
     export default {
         name: 'Game',
@@ -43,14 +42,187 @@
         },
         data: function () {
             return{
-                connection: null
+                connection: null,
+                fields: [],
+                currentPlayerIndex: 0,
+                size: 10,
+                colA: 0,
+                rowA: 0,
+                dir: "d"
             }
         },
         methods:{
             sendMessage:function (message) {
                 console.log(this.connection);
                 this.connection.send(message);
+            },
+            updateView:function () {
+                let num = 0
+                for(let row = 0; row < this.size; row++) {
+                    for(let col = 0; col < this.size; col++) {
+                        if(this.fields[num].colour === 0) {
+                            let td = document.getElementById("row"+ row + "col" + col)
+                            let img = $("." + "row"+ row + "col" + col)
+                            td.className = "cell cells_blue"
+                            switch (this.fields[num].figName) {
+                                case 'F':
+                                    img
+                                        .attr('src',require('../assets/svg/character-flag.svg'))
+                                        .attr('alt',"F")
+                                    break;
+                                case 'B':
+                                    img
+                                        .attr('src', require("../assets/svg/character-bomb.svg"))
+                                        .attr('alt',"B")
+                                    break;
+                                case 'M':
+                                    img
+                                        .attr('src', require("../assets/svg/character-marshal.svg"))
+                                        .attr('alt',"M")
+                                    break;
+                                case '1':
+                                    img
+                                        .attr('src', require("../assets/svg/character-spy.svg"))
+                                        .attr('alt',"1")
+                                    break;
+                                case '2':
+                                    img
+                                        .attr('src', require("../assets/svg/character-scout.svg"))
+                                        .attr('alt',"2")
+                                    break;
+                                case '3':
+                                    img
+                                        .attr('src', require("../assets/svg/character-miner.svg"))
+                                        .attr('alt',"3")
+                                    break;
+                                case '4':
+                                    img
+                                        .attr('src', require("../assets/svg/character-sergeant.svg"))
+                                        .attr('alt',"4")
+                                    break;
+                                case '5':
+                                    img
+                                        .attr('src', require("../assets/svg/character-lieutenant.svg"))
+                                        .attr('alt',"5")
+                                    break;
+                                case '6':
+                                    img
+                                        .attr('src', require("../assets/svg/character-captain.svg"))
+                                        .attr('alt',"6")
+                                    break;
+                                case '7':
+                                    img
+                                        .attr('src', require("../assets/svg/character-major.svg"))
+                                        .attr('alt',"7")
+                                    break;
+                                case "8":
+                                    img
+                                        .attr('src', require("../assets/svg/character-colonel.svg"))
+                                        .attr('alt',"8")
+                                    break;
+                                case "9":
+                                    img
+                                        .attr('src', require("../assets/svg/character-general.svg"))
+                                        .attr('alt',"9")
+                                    break;
+                            }
+                        } else if (this.fields[num].colour === 1) {
+                            let td = document.getElementById("row"+ row + "col" + col)
+                            let img = $("." + "row"+ row + "col" + col)
+                            td.className = "cell cells_red"
+                            switch (this.fields[num].figName) {
+                                case 'F':
+                                    img
+                                        .attr('src',require('../assets/svg/character-flag.svg'))
+                                        .attr('alt',"F")
+                                    break;
+                                case 'B':
+                                    img
+                                        .attr('src', require("../assets/svg/character-bomb.svg"))
+                                        .attr('alt',"B")
+                                    break;
+                                case 'M':
+                                    img
+                                        .attr('src', require("../assets/svg/character-marshal.svg"))
+                                        .attr('alt',"M")
+                                    break;
+                                case '1':
+                                    img
+                                        .attr('src', require("../assets/svg/character-spy.svg"))
+                                        .attr('alt',"1")
+                                    break;
+                                case '2':
+                                    img
+                                        .attr('src', require("../assets/svg/character-scout.svg"))
+                                        .attr('alt',"2")
+                                    break;
+                                case '3':
+                                    img
+                                        .attr('src', require("../assets/svg/character-miner.svg"))
+                                        .attr('alt',"3")
+                                    break;
+                                case '4':
+                                    img
+                                        .attr('src', require("../assets/svg/character-sergeant.svg"))
+                                        .attr('alt',"4")
+                                    break;
+                                case '5':
+                                    img
+                                        .attr('src', require("../assets/svg/character-lieutenant.svg"))
+                                        .attr('alt',"5")
+                                    break;
+                                case '6':
+                                    img
+                                        .attr('src', require("../assets/svg/character-captain.svg"))
+                                        .attr('alt',"6")
+                                    break;
+                                case '7':
+                                    img
+                                        .attr('src', require("../assets/svg/character-major.svg"))
+                                        .attr('alt',"7")
+                                    break;
+                                case "8":
+                                    img
+                                        .attr('src', require("../assets/svg/character-colonel.svg"))
+                                        .attr('alt',"8")
+                                    break;
+                                case "9":
+                                    img
+                                        .attr('src', require("../assets/svg/character-general.svg"))
+                                        .attr('alt',"9")
+                                    break;
+                            }
+                        } else {
+                            let td = document.getElementById("row"+ row + "col" + col)
+                            td.className = "cell cells__green" //empty cell
+                            $("." + "row"+ row + "col" + col)
+                                .attr('src',"")
+                                .attr('alt',"")
+                        }
+                        num++;
+                    }
+                }
+            },
+            move: async function (dir, row, col) {
+                let json = JSON.stringify({
+                    "row": row,
+                    "col": col,
+                    "dir": dir
+                })
+                let result = await axios.post('http://localhost:9000/move', json);
+                const {matchField, currentPlayer, currentPlayerIndex} = result
+                this.updateMatchField(matchField)
+                this.updateView()
+                this.updateCurrentPlayer(currentPlayer, currentPlayerIndex)
+            },
+            updateMatchField: function (newFields) {
+                this.fields = newFields
+            },
+            updateCurrentPlayer(currentPlayer, currentPlayerIndex){
+                this.currentPlayerIndex = currentPlayerIndex
+                document.getElementById("infoPlayer").innerHTML = currentPlayer + ", it's your turn!"
             }
+
         },
         created: function () {
             console.log("Starting connection to Stratego WebSocket Server")
@@ -70,16 +242,18 @@
                 console.log("message")
                 if (typeof e.data === "string") {
                     let json = JSON.parse(e.data);
+                    console.log(json)
+                    console.log("matchfield: " + json.matchField)
                     let fields = json.matchField;
                     let currentPlayerIndex = json.currentPlayerIndex;
                     let currentPlayer = json.currentPlayer;
-                    console.log("fields: " + fields)
-                    console.log("playerIndex: " + currentPlayerIndex)
+                    //console.log("fields: " + fields)
+                    //console.log("playerIndex: " + currentPlayerIndex)
+                    this.updateMatchField(fields);
+                    this.updateView();
+                    this.updateCurrentPlayer(currentPlayer, currentPlayerIndex)
 
-                    var matchfield = new Matchfield()
-                    matchField.updateMatchField(fields);
-                    matchField.updateView();
-                    matchField.updateCurrentPlayer(currentPlayer, currentPlayerIndex)
+
                 }
             }
         },
@@ -87,8 +261,67 @@
             this.$nextTick(function () {
                 // Code that will run only after the
                 // entire view has been rendered
+
+
                 axios.get("http://localhost:9000/json")
-                .then(response => console.log("ajax response: " + (JSON.stringify(response.data))))
+                .then(response => {
+                    //console.log(JSON.stringify(response.data));
+                    this.updateMatchField(response.data.matchField);
+                    this.updateView()
+                    this.updateCurrentPlayer(JSON.stringify(response.data.currentPlayer), JSON.stringify(response.data.currenPlayerIndex))
+                })
+
+
+
+                $(document).on('click', '.cells_blue',(function () {
+                    this.colA = this.parentElement.rowIndex
+                    this.rowA = this.cellIndex
+
+                    // changes background color of selected cell:
+                    if(this.currentPlayerIndex === 0){
+                        $(".cell").removeClass('selectedCell');
+                        $(this).addClass('selectedCell');
+                    }
+                }))
+
+                $(document).on('click', '.cells_red',(function () {
+                    this.colA = this.parentElement.rowIndex
+                    this.rowA = this.cellIndex
+
+                    // changes background color of selected cell:
+                    if(this.currentPlayerIndex === 1){
+                        $(".cell").removeClass('selectedCell');
+                        $(this).addClass('selectedCell');
+                    }
+                }))
+
+                $(document).keydown(function(event){
+                    var key = event.which;
+                    switch(key) {
+                        case 37:
+                            dir = "l"
+                            console.log("left")
+                            // Key left.
+                            break;
+                        case 38:
+                            dir = "u"
+                            console.log("up")
+                            // Key up.
+                            break;
+                        case 39:
+                            dir = "r"
+                            console.log("right")
+                            // Key right.
+                            break;
+                        case 40:
+                            dir = "d"
+                            console.log("down")
+                            // Key down.
+                            break;
+                    }
+                    this.move(dir, rowA, colA)
+                });
+
             })
         }
 
