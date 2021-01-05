@@ -1,3 +1,24 @@
+
+<style lang="scss">
+  @import './assets/styles/app.css';
+</style>
+<style lang="scss">
+  @import './assets/styles/home.css';
+</style>
+<style lang="scss">
+  @import './assets/styles/about.css';
+</style>
+<style lang="scss">
+  @import './assets/styles/gameplay.css';
+</style>
+<style lang="scss">
+  @import './assets/styles/game-menu.css';
+</style>
+<style lang="scss">
+  @import './assets/styles/game-gameboard.css';
+</style>
+
+
 <template>
   <v-app id="inspire">
     <v-app-bar
@@ -74,7 +95,6 @@
         {title:'Home', to:'/'},
         {title:'About', to:'/about'},
         {title:'Gameplay', to:'/gameplay'},
-        {title:'Menu', to:'/menu'},
         {title:'Game', to:'/game'},
       ],
     }),
@@ -82,15 +102,3 @@
 </script>
 
 
-<style>
-  @import './assets/styles/app.css';
-</style>
-<style>
-  @import './assets/styles/home.css';
-</style>
-<style>
-  @import './assets/styles/about.css';
-</style>
-<style>
-  @import './assets/styles/gameplay.css';
-</style>
