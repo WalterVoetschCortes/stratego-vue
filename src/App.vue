@@ -90,14 +90,20 @@
 
 <script>
   export default {
-    data: () => ({
-      links: [
-        {title:'Home', to:'/'},
-        {title:'About', to:'/about'},
-        {title:'Gameplay', to:'/gameplay'},
-        {title:'Game', to:'/game'},
-      ],
-    }),
+    name: 'App',
+    data() {
+      return{
+        links: [
+          {title:'Home', to:'/'},
+          {title:'About', to:'/about'},
+          {title:'Gameplay', to:'/gameplay'},
+          {title:'Menu', to:'/menu'},
+          {title:'Game', to:'/game'},
+        ],
+        clientPlayerIndex: 0
+      }
+    },
+
   }
 </script>
 

@@ -17,7 +17,7 @@
                             flat
                             tile
                     >
-                        <v-btn class="button" to="/game">
+                        <v-btn class="button" to="/menu">
                             Play
                         </v-btn>
                     </v-card>

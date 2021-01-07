@@ -65,134 +65,140 @@
                             let td = document.getElementById("row"+ row + "col" + col)
                             let img = $("." + "row"+ row + "col" + col)
                             td.className = "cell cells_blue"
-                            switch (this.fields[num].figName) {
-                                case 'F':
-                                    img
-                                        .attr('src',require('../assets/svg/character-flag.svg'))
-                                        .attr('alt',"F")
-                                    break;
-                                case 'B':
-                                    img
-                                        .attr('src', require("../assets/svg/character-bomb.svg"))
-                                        .attr('alt',"B")
-                                    break;
-                                case 'M':
-                                    img
-                                        .attr('src', require("../assets/svg/character-marshal.svg"))
-                                        .attr('alt',"M")
-                                    break;
-                                case '1':
-                                    img
-                                        .attr('src', require("../assets/svg/character-spy.svg"))
-                                        .attr('alt',"1")
-                                    break;
-                                case '2':
-                                    img
-                                        .attr('src', require("../assets/svg/character-scout.svg"))
-                                        .attr('alt',"2")
-                                    break;
-                                case '3':
-                                    img
-                                        .attr('src', require("../assets/svg/character-miner.svg"))
-                                        .attr('alt',"3")
-                                    break;
-                                case '4':
-                                    img
-                                        .attr('src', require("../assets/svg/character-sergeant.svg"))
-                                        .attr('alt',"4")
-                                    break;
-                                case '5':
-                                    img
-                                        .attr('src', require("../assets/svg/character-lieutenant.svg"))
-                                        .attr('alt',"5")
-                                    break;
-                                case '6':
-                                    img
-                                        .attr('src', require("../assets/svg/character-captain.svg"))
-                                        .attr('alt',"6")
-                                    break;
-                                case '7':
-                                    img
-                                        .attr('src', require("../assets/svg/character-major.svg"))
-                                        .attr('alt',"7")
-                                    break;
-                                case "8":
-                                    img
-                                        .attr('src', require("../assets/svg/character-colonel.svg"))
-                                        .attr('alt',"8")
-                                    break;
-                                case "9":
-                                    img
-                                        .attr('src', require("../assets/svg/character-general.svg"))
-                                        .attr('alt',"9")
-                                    break;
+                            if(this.$parent.clientPlayerIndex === 0) {
+                                switch (this.fields[num].figName) {
+                                    case 'F':
+                                        img
+                                            .attr('src',require('../assets/svg/character-flag.svg'))
+                                            .attr('alt',"F")
+                                        break;
+                                    case 'B':
+                                        img
+                                            .attr('src', require("../assets/svg/character-bomb.svg"))
+                                            .attr('alt',"B")
+                                        break;
+                                    case 'M':
+                                        img
+                                            .attr('src', require("../assets/svg/character-marshal.svg"))
+                                            .attr('alt',"M")
+                                        break;
+                                    case '1':
+                                        img
+                                            .attr('src', require("../assets/svg/character-spy.svg"))
+                                            .attr('alt',"1")
+                                        break;
+                                    case '2':
+                                        img
+                                            .attr('src', require("../assets/svg/character-scout.svg"))
+                                            .attr('alt',"2")
+                                        break;
+                                    case '3':
+                                        img
+                                            .attr('src', require("../assets/svg/character-miner.svg"))
+                                            .attr('alt',"3")
+                                        break;
+                                    case '4':
+                                        img
+                                            .attr('src', require("../assets/svg/character-sergeant.svg"))
+                                            .attr('alt',"4")
+                                        break;
+                                    case '5':
+                                        img
+                                            .attr('src', require("../assets/svg/character-lieutenant.svg"))
+                                            .attr('alt',"5")
+                                        break;
+                                    case '6':
+                                        img
+                                            .attr('src', require("../assets/svg/character-captain.svg"))
+                                            .attr('alt',"6")
+                                        break;
+                                    case '7':
+                                        img
+                                            .attr('src', require("../assets/svg/character-major.svg"))
+                                            .attr('alt',"7")
+                                        break;
+                                    case "8":
+                                        img
+                                            .attr('src', require("../assets/svg/character-colonel.svg"))
+                                            .attr('alt',"8")
+                                        break;
+                                    case "9":
+                                        img
+                                            .attr('src', require("../assets/svg/character-general.svg"))
+                                            .attr('alt',"9")
+                                        break;
+                                }
                             }
+
                         } else if (this.fields[num].colour === 1) {
                             let td = document.getElementById("row"+ row + "col" + col)
                             let img = $("." + "row"+ row + "col" + col)
                             td.className = "cell cells_red"
-                            switch (this.fields[num].figName) {
-                                case 'F':
-                                    img
-                                        .attr('src',require('../assets/svg/character-flag.svg'))
-                                        .attr('alt',"F")
-                                    break;
-                                case 'B':
-                                    img
-                                        .attr('src', require("../assets/svg/character-bomb.svg"))
-                                        .attr('alt',"B")
-                                    break;
-                                case 'M':
-                                    img
-                                        .attr('src', require("../assets/svg/character-marshal.svg"))
-                                        .attr('alt',"M")
-                                    break;
-                                case '1':
-                                    img
-                                        .attr('src', require("../assets/svg/character-spy.svg"))
-                                        .attr('alt',"1")
-                                    break;
-                                case '2':
-                                    img
-                                        .attr('src', require("../assets/svg/character-scout.svg"))
-                                        .attr('alt',"2")
-                                    break;
-                                case '3':
-                                    img
-                                        .attr('src', require("../assets/svg/character-miner.svg"))
-                                        .attr('alt',"3")
-                                    break;
-                                case '4':
-                                    img
-                                        .attr('src', require("../assets/svg/character-sergeant.svg"))
-                                        .attr('alt',"4")
-                                    break;
-                                case '5':
-                                    img
-                                        .attr('src', require("../assets/svg/character-lieutenant.svg"))
-                                        .attr('alt',"5")
-                                    break;
-                                case '6':
-                                    img
-                                        .attr('src', require("../assets/svg/character-captain.svg"))
-                                        .attr('alt',"6")
-                                    break;
-                                case '7':
-                                    img
-                                        .attr('src', require("../assets/svg/character-major.svg"))
-                                        .attr('alt',"7")
-                                    break;
-                                case "8":
-                                    img
-                                        .attr('src', require("../assets/svg/character-colonel.svg"))
-                                        .attr('alt',"8")
-                                    break;
-                                case "9":
-                                    img
-                                        .attr('src', require("../assets/svg/character-general.svg"))
-                                        .attr('alt',"9")
-                                    break;
+                            if(this.$parent.clientPlayerIndex === 1){
+                                switch (this.fields[num].figName) {
+                                    case 'F':
+                                        img
+                                            .attr('src',require('../assets/svg/character-flag.svg'))
+                                            .attr('alt',"F")
+                                        break;
+                                    case 'B':
+                                        img
+                                            .attr('src', require("../assets/svg/character-bomb.svg"))
+                                            .attr('alt',"B")
+                                        break;
+                                    case 'M':
+                                        img
+                                            .attr('src', require("../assets/svg/character-marshal.svg"))
+                                            .attr('alt',"M")
+                                        break;
+                                    case '1':
+                                        img
+                                            .attr('src', require("../assets/svg/character-spy.svg"))
+                                            .attr('alt',"1")
+                                        break;
+                                    case '2':
+                                        img
+                                            .attr('src', require("../assets/svg/character-scout.svg"))
+                                            .attr('alt',"2")
+                                        break;
+                                    case '3':
+                                        img
+                                            .attr('src', require("../assets/svg/character-miner.svg"))
+                                            .attr('alt',"3")
+                                        break;
+                                    case '4':
+                                        img
+                                            .attr('src', require("../assets/svg/character-sergeant.svg"))
+                                            .attr('alt',"4")
+                                        break;
+                                    case '5':
+                                        img
+                                            .attr('src', require("../assets/svg/character-lieutenant.svg"))
+                                            .attr('alt',"5")
+                                        break;
+                                    case '6':
+                                        img
+                                            .attr('src', require("../assets/svg/character-captain.svg"))
+                                            .attr('alt',"6")
+                                        break;
+                                    case '7':
+                                        img
+                                            .attr('src', require("../assets/svg/character-major.svg"))
+                                            .attr('alt',"7")
+                                        break;
+                                    case "8":
+                                        img
+                                            .attr('src', require("../assets/svg/character-colonel.svg"))
+                                            .attr('alt',"8")
+                                        break;
+                                    case "9":
+                                        img
+                                            .attr('src', require("../assets/svg/character-general.svg"))
+                                            .attr('alt',"9")
+                                        break;
+                                }
                             }
+
                         } else {
                             let td = document.getElementById("row"+ row + "col" + col)
                             td.className = "cell cells__green" //empty cell
@@ -273,6 +279,7 @@
                 // Code that will run only after the
                 // entire view has been rendered
 
+
                 var ref = this;
 
                 axios.get("http://localhost:9000/json")
@@ -282,7 +289,6 @@
                     this.updateView()
                     this.updateCurrentPlayer(JSON.stringify(response.data.currentPlayer),response.data.currentPlayerIndex)
                 })
-
 
 
                 $(document).on('click', '.cells_blue',(function () {
