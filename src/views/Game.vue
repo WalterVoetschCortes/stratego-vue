@@ -242,7 +242,11 @@
             updateCurrentPlayer(currentPlayer, currentPlayerIndex){
                 console.log("updateCurrentPlayer: " + currentPlayer)
                 this.currentPlayerIndex = currentPlayerIndex
-                document.getElementById("infoPlayer").innerHTML = currentPlayer + ", it's your turn!"
+                if(parseInt(this.clientPlayerIndex) === this.currentPlayerIndex){
+                    document.getElementById("infoPlayer").innerHTML = currentPlayer + ", it's your turn!"
+                }else {
+                    document.getElementById("infoPlayer").innerHTML = "Wait, it's " + currentPlayer + "s turn!"
+                }
             }
 
         },
