@@ -10,6 +10,7 @@
                     <v-sheet
                             min-height="70vh"
                             rounded="lg"
+                            class = "transparent"
                     >
                         <!-- ===== Menu ===== -->
                         <div class="menu" id="menu">
@@ -21,13 +22,13 @@
                                     <input type="text" id="inputPlayer1" class="nameInput form-control" placeholder="Your name" />
                                 </div>
 
-                                <v-btn class="menuButton newGameButton ">New Game</v-btn>
+                                <v-btn class="menuButton newGameButton ">Play</v-btn>
 
                                 <p class="or">---- or ----</p>
 
                                 <button class="menuButton" id="loadButton">Load Game</button>
 
-                                <p class="mt-5 mb-3 copy">&#169; 2020 by Walter Voetsch Cortes and Axel Schwarz</p>
+                                <p class="mt-5 mb-3 copy">&#169; 2021 by Walter Voetsch Cortes and Axel Schwarz</p>
                             </div>
                         </div>
 
@@ -66,8 +67,8 @@
                 console.log(json)
                 let result = await axios(options);
                 const {clientPlayerIndex} = result.data
-                this.$parent.clientPlayerIndex = clientPlayerIndex
-                console.log("set player in Menu.vue: " + this.$parent.clientPlayerIndex)
+                sessionStorage.clientPlayerIndex = clientPlayerIndex
+                console.log("set player in localStorage in Menu.vue: " + sessionStorage.clientPlayerIndex)
                 console.log(result)
             }
         },

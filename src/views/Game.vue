@@ -49,7 +49,8 @@
                 size: 10,
                 colA: 0,
                 rowA: 0,
-                dir: "d"
+                dir: "d",
+                clientPlayerIndex: ""
             }
         },
         methods:{
@@ -64,8 +65,11 @@
                         if(this.fields[num].colour === 0) {
                             let td = document.getElementById("row"+ row + "col" + col)
                             let img = $("." + "row"+ row + "col" + col)
+                            img
+                                .attr('src',"")
+                                .attr('alt',"")
                             td.className = "cell cells_blue"
-                            if(this.$parent.clientPlayerIndex === 0) {
+                            if(this.clientPlayerIndex === "0") {
                                 switch (this.fields[num].figName) {
                                     case 'F':
                                         img
@@ -133,8 +137,11 @@
                         } else if (this.fields[num].colour === 1) {
                             let td = document.getElementById("row"+ row + "col" + col)
                             let img = $("." + "row"+ row + "col" + col)
+                            img
+                                .attr('src',"")
+                                .attr('alt',"")
                             td.className = "cell cells_red"
-                            if(this.$parent.clientPlayerIndex === 1){
+                            if(this.clientPlayerIndex === "1"){
                                 switch (this.fields[num].figName) {
                                     case 'F':
                                         img
@@ -240,6 +247,9 @@
 
         },
         created: function () {
+
+            console.log("clientPlayerIndex of this client is: " + sessionStorage.clientPlayerIndex)
+
             var ref = this;
             console.log("Starting connection to Stratego WebSocket Server")
             this.connection = new WebSocket("ws://localhost:9000/websocket")
@@ -275,10 +285,14 @@
             }
         },
         mounted: function () {
+
+            if(sessionStorage.clientPlayerIndex){
+                this.clientPlayerIndex = sessionStorage.clientPlayerIndex
+            }
+
             this.$nextTick(function () {
                 // Code that will run only after the
                 // entire view has been rendered
-
 
                 var ref = this;
 
@@ -292,26 +306,32 @@
 
 
                 $(document).on('click', '.cells_blue',(function () {
-                    ref.colA = this.parentElement.rowIndex
-                    ref.rowA = this.cellIndex
+                    if(ref.clientPlayerIndex === "0"){
+                        ref.colA = this.parentElement.rowIndex
+                        ref.rowA = this.cellIndex
 
-                    console.log(ref.colA + " " + ref.rowA)
-                    // changes background color of selected cell:
-                    if(ref.currentPlayerIndex === 0){
-                        $(".cell").removeClass('selectedCell');
-                        $(this).addClass('selectedCell');
+                        console.log(ref.colA + " " + ref.rowA)
+                        // changes background color of selected cell:
+                        if(ref.currentPlayerIndex === 0){
+                            $(".cell").removeClass('selectedCell');
+                            $(this).addClass('selectedCell');
+                        }
                     }
+
                 }))
 
                 $(document).on('click', '.cells_red',(function () {
-                    ref.colA = this.parentElement.rowIndex
-                    ref.rowA = this.cellIndex
+                    if(ref.clientPlayerIndex === "1"){
+                        ref.colA = this.parentElement.rowIndex
+                        ref.rowA = this.cellIndex
 
-                    // changes background color of selected cell:
-                    if(ref.currentPlayerIndex === 1){
-                        $(".cell").removeClass('selectedCell');
-                        $(this).addClass('selectedCell');
+                        // changes background color of selected cell:
+                        if(ref.currentPlayerIndex === 1){
+                            $(".cell").removeClass('selectedCell');
+                            $(this).addClass('selectedCell');
+                        }
                     }
+
                 }))
 
                 $(document).keydown(function(event){

@@ -1,3 +1,7 @@
+.transparent {
+    background-color: transparent!important;
+    border-color: transparent!important;
+}
 
 .menu {
     background: url("../images/menu3.jpg") no-repeat center center fixed;
@@ -100,6 +104,9 @@
 .newGameButton{
     margin-top: var(--mb-2);
 
+}
+.nameInput{
+    background-color: #fff!important;
 }
 .menuButton{
     background-color: var(--second-color);

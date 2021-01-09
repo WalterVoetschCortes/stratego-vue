@@ -99,8 +99,7 @@
           {title:'Gameplay', to:'/gameplay'},
           {title:'Menu', to:'/menu'},
           {title:'Game', to:'/game'},
-        ],
-        clientPlayerIndex: 0
+        ]
       }
     },
 
