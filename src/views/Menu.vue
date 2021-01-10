@@ -24,9 +24,7 @@
 
                                 <v-btn class="menuButton newGameButton ">Play</v-btn>
 
-                                <p class="or">---- or ----</p>
-
-                                <button class="menuButton" id="loadButton">Load Game</button>
+                                <p class="or" id ="playersInfoMenu"></p>
 
                                 <p class="mt-5 mb-3 copy">&#169; 2021 by Walter Voetsch Cortes and Axel Schwarz</p>
                             </div>
@@ -68,8 +66,14 @@
                 let result = await axios(options);
                 const {clientPlayerIndex} = result.data
                 sessionStorage.clientPlayerIndex = clientPlayerIndex
+                console.log("result " + clientPlayerIndex)
                 console.log("set player in localStorage in Menu.vue: " + sessionStorage.clientPlayerIndex)
-                console.log(result)
+                if(clientPlayerIndex === 0){
+                    localStorage.firstPlayer = playerName
+                    localStorage.secondPlayer = "unknown"
+                }else {
+                    localStorage.secondPlayer = playerName
+                }
             }
         },
         mounted: function () {
@@ -84,9 +88,28 @@
                     let playerName = document.getElementById('inputPlayer1').value;
 
                     if( playerName !== ""){
-                        ref.setPlayer(playerName)
+                        ref.setPlayer(playerName);
                     }
                 }))
+
+                if (typeof localStorage.firstPlayer === 'undefined' || localStorage.firstPlayer === null){
+                    document.getElementById('playersInfoMenu').innerHTML = "There is nobody in the game."
+                } else if(localStorage.secondPlayer === "unknown")  {
+                    document.getElementById('playersInfoMenu').innerHTML = "Just " + localStorage.firstPlayer + " is in the game. Enter your name and play with him!"
+                } else{
+                    document.getElementById('playersInfoMenu').innerHTML = localStorage.firstPlayer + " and " + localStorage.secondPlayer + " are in the game."
+                }
+
+                window.onstorage = () => {
+                    // When local storage changes...
+                    if (typeof localStorage.firstPlayer !== 'undefined' && localStorage.firstPlayer !== null){
+                        document.getElementById('playersInfoMenu').innerHTML = "There is nobody in the game."
+                    } else if(localStorage.secondPlayer === "unknown")  {
+                        document.getElementById('playersInfoMenu').innerHTML = "Just " + localStorage.firstPlayer + " is in the game. Enter your name and play with him!"
+                    } else{
+                        document.getElementById('playersInfoMenu').innerHTML = localStorage.firstPlayer + " and " + localStorage.secondPlayer + " are in the game."
+                    }
+                }
 
             })
         }
