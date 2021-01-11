@@ -89,6 +89,7 @@
 
                     if( playerName !== ""){
                         ref.setPlayer(playerName);
+                        location.href = '#/game'
                     }
                 }))
 
